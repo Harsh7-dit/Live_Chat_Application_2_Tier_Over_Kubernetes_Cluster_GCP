@@ -1,0 +1,27 @@
+---
+apiVersion: database/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: hmasane757/p2mongodb
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: MongoVolume
+              mountPath: /data/db
+      volumes:
+        - name: MongoVolume
+          persistentVolumeClaim:
+            claimName: mongo-pvc

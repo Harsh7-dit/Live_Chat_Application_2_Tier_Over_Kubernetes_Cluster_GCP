@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-webserver
+  labels:
+    app: flask-webserver
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-webserver
+  template:
+    metadata:
+      labels:
+        app: flask-webserver
+    spec:
+      containers:
+        - name: flask-webserver
+          image: flaskweb:v1
+          ports:
+            - containerPort: 8080 
+          env:
+            - name: FLASK_ENV
+              value: "production"
+            - name: SECRET_KEY
+              value: "xZxM5GMQ37CQw9kf6SRS33LadZTpSKt6"
+            - name: MONGO_HOST
+              value: "mongodb-service"
+            - name: MONGO_PORT
+              value: "27017"
