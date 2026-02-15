@@ -1,5 +1,10 @@
-# Web_Application_Over_Kubernetes_Cluster_GCP
+# Live_Chat_Application(2 Tier)_Over_Kubernetes_Cluster_GCP
 
+A Flask application with live chat functionality where comments are added to the page for all connected clients, and the page views automatically updates as well.
+
+Using Javascript, SocketIO, and JQuery. All messages are sent to the Python web server, and then broadcast back to all clients.
+
+Persistent chat: all chat messages are saved to an external Mongodb, and are added to the page for any other people joining the chat page.
 
 This project demonstrates deploying a **Flask web application** with a **MongoDB Database** on Kubernetes using:
 
